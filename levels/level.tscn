@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjw522enodsg1"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_1sjvv"]
+[ext_resource type="Script" path="res://levels/test_ball.gd" id="2_6tohw"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0wf1n"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0sitv"]
+size = Vector2(20, 20)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_70u1a"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_65jeu"]
+
+[node name="level" type="Node3D"]
+script = ExtResource("1_1sjvv")
+
+[node name="death" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="death"]
+shape = SubResource("WorldBoundaryShape3D_0wf1n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="death"]
+mesh = SubResource("PlaneMesh_0sitv")
+
+[node name="test_light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2)
+light_energy = 10.0
+
+[node name="test_ball" type="Node3D" parent="."]
+script = ExtResource("2_6tohw")
+
+[node name="testball" type="RigidBody3D" parent="test_ball"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="test_ball/testball"]
+shape = SubResource("SphereShape3D_70u1a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="test_ball/testball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_65jeu")
+
+[node name="Area3D" type="Area3D" parent="test_ball"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="test_ball/Area3D"]
+shape = SubResource("SphereShape3D_70u1a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 3, 0)
+
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, -0.707107, -3.09086e-08, 0, 15, 0)
+
+[connection signal="area_entered" from="test_ball/Area3D" to="test_ball" method="_on_area_3d_area_entered"]

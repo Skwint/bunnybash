@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://d3cwor12xkq36"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://f4kqblue3fty" path="res://levels/house.phymat" id="1_o7yic"]
+[ext_resource type="Script" path="res://levels/house.gd" id="2_nt0g8"]
+[ext_resource type="Texture2D" uid="uid://bsqcs30s7dgqx" path="res://levels/green_barrier_floor.png" id="2_t4mhl"]
+[ext_resource type="Texture2D" uid="uid://xkukb4drj0iu" path="res://levels/green_barrier_wall.png" id="3_vh1ld"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yuoha"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0m8y"]
+albedo_texture = ExtResource("2_t4mhl")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_a5d01"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mf0qr"]
+albedo_texture = ExtResource("3_vh1ld")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jul1v"]
+size = Vector3(1, 10, 1)
+
+[node name="house" type="StaticBody3D"]
+physics_material_override = ExtResource("1_o7yic")
+script = ExtResource("2_nt0g8")
+
+[node name="roof_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("BoxMesh_yuoha")
+surface_material_override/0 = SubResource("StandardMaterial3D_o0m8y")
+
+[node name="wall_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 9.6, 0, 0, 0, 1, 0, -5, 0)
+mesh = SubResource("BoxMesh_a5d01")
+surface_material_override/0 = SubResource("StandardMaterial3D_mf0qr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+shape = SubResource("BoxShape3D_jul1v")

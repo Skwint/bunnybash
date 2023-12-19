@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl8nrarsw5wgh"]
+
+[ext_resource type="Script" path="res://ui/help_menu.gd" id="1_kuivp"]
+
+[node name="helpMenu" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kuivp")
+
+[node name="instructions" type="Label" parent="."]
+layout_mode = 2
+text = "Oh No!
+Goop Bunnies are eating all our dumb Brocolli!
+Go Get Them!
+
+Controls are WASD or arrow keys and the two mouse buttons."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="btnBack" type="Button" parent="."]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="btnBack" to="." method="_on_btn_back_pressed"]
