@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://5yfcebb6siqt"]
+
+[ext_resource type="PackedScene" uid="uid://dc16snjgks1ya" path="res://entities/broccoli_large.blend" id="1_3cji1"]
+
+[node name="broccoli_inherit" instance=ExtResource("1_3cji1")]

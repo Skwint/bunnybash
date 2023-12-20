@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjw522enodsg1"]
+[gd_scene load_steps=8 format=3 uid="uid://bjw522enodsg1"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_1sjvv"]
 [ext_resource type="Script" path="res://levels/test_ball.gd" id="2_6tohw"]
+[ext_resource type="PackedScene" uid="uid://cyq4y046uu2nu" path="res://entities/broccoli.tscn" id="3_kfx44"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0wf1n"]
 
@@ -51,6 +52,9 @@ shape = SubResource("SphereShape3D_70u1a")
 transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 3, 0)
 
 [node name="camera" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, -0.707107, -3.09086e-08, 0, 15, 0)
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612372, 10, 3, 10)
+
+[node name="broccoli" parent="." instance=ExtResource("3_kfx44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51866, 0, 0)
 
 [connection signal="area_entered" from="test_ball/Area3D" to="test_ball" method="_on_area_3d_area_entered"]

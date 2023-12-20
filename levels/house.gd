@@ -16,6 +16,6 @@ func set_size(x, z):
 	var wall = $wall_mesh
 	var coll = $CollisionShape3D
 	
-	roof.scale = Vector3(x, 0.2, z)
-	wall.scale = Vector3(x, 9.6, z)
-	coll.scale = Vector3(x, 10, z)
+	roof.scale = Vector3(x, 1.0, z)
+	wall.scale = Vector3(x, 1.0, z)
+	coll.scale = Vector3(x, 1.0, z)

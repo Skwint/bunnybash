@@ -2,6 +2,7 @@ extends Node3D
 
 var house_res = preload("res://levels/house.tscn")
 var bridge_res = preload("res://levels/bridge.tscn")
+var broccoli_res = preload("res://entities/broccoli.tscn")
 
 var houses : Array[Rect2i]
 var growable : Array[int]
@@ -29,6 +30,7 @@ func generate():
 	generate_rects()
 	generate_houses()
 	generate_bridges()
+	generate_broccoli()
 
 func generate_rects():
 	for z in houses_deep:
@@ -160,3 +162,12 @@ func house_touch(idx, rect):
 			if col_house.intersects(rect):
 				return true
 	return false
+
+func generate_broccoli():
+	for idx in houses.size():
+		var rect : Rect2i = houses[idx]
+		for z in range(rect.position.y, rect.position.y + rect.size.y, 1):
+			for x in range(rect.position.x, rect.position.x + rect.size.x, 1):
+				var broc = broccoli_res.instantiate()
+				broc.set_position(Vector3(x + randf_range(0.2,0.8), 0.0, z + randf_range(0.2,0.8)))
+				add_child(broc)
