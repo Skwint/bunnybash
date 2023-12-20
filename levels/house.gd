@@ -14,7 +14,7 @@ func _process(delta):
 func set_size(x, z):
 	var roof = $roof_mesh
 	var wall = $wall_mesh
-	var coll = $CollisionShape3D
+	var coll = $shape
 	
 	roof.scale = Vector3(x, 1.0, z)
 	wall.scale = Vector3(x, 1.0, z)

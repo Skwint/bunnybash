@@ -23,6 +23,13 @@ ui_stack_signals="*res://ui/ui_stack_signals.gd"
 
 theme/custom_font="res://theme/WEBLBRG_.TTF"
 
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="broccoli"
+3d_physics/layer_3="monster"
+3d_physics/layer_4="mahou"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -53,6 +53,7 @@ transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0
 
 [node name="camera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612372, 10, 3, 10)
+current = true
 
 [node name="broccoli" parent="." instance=ExtResource("3_kfx44")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51866, 0, 0)

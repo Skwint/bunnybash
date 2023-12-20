@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyq4y046uu2nu"]
+[gd_scene load_steps=5 format=3 uid="uid://cyq4y046uu2nu"]
 
 [ext_resource type="Script" path="res://entities/broccoli.gd" id="2_k7wn2"]
 [ext_resource type="PackedScene" uid="uid://5yfcebb6siqt" path="res://entities/broccoli_inherit.tscn" id="2_y4d8n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mxl1s"]
 radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hgqjc"]
+radius = 1.0
 
 [node name="broccoli" type="Area3D"]
 monitoring = false
@@ -15,3 +18,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 shape = SubResource("SphereShape3D_mxl1s")
 
 [node name="model" parent="." instance=ExtResource("2_y4d8n")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0, 0, 0)
+
+[node name="detect" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="detect"]
+shape = SubResource("SphereShape3D_hgqjc")

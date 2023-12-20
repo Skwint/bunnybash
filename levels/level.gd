@@ -3,9 +3,12 @@ extends Node3D
 var house_res = preload("res://levels/house.tscn")
 var bridge_res = preload("res://levels/bridge.tscn")
 var broccoli_res = preload("res://entities/broccoli.tscn")
+var bunny_res = preload("res://entities/bunny.tscn")
 
 var houses : Array[Rect2i]
 var growable : Array[int]
+var bunnies = []
+var total_house_size : int = 0
 const houses_wide : int = 5
 const houses_deep : int = 5
 const house_skip_chance : int = 20
@@ -15,6 +18,7 @@ const min_left : int = - house_space_x * houses_wide / 2
 const min_top : int = - house_space_z * houses_deep / 2
 const max_right : int = house_space_x * houses_wide / 2
 const max_bottom : int = house_space_z * houses_deep / 2
+const start_bunny_count : int = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +35,7 @@ func generate():
 	generate_houses()
 	generate_bridges()
 	generate_broccoli()
+	generate_bunnies()
 
 func generate_rects():
 	for z in houses_deep:
@@ -104,6 +109,7 @@ func generate_houses():
 		var posy : float = house.position.y + 0.5 * house.size.y
 		house_object.set_position(Vector3(posx, 0.0, posy))
 		add_child(house_object)
+		total_house_size += house.get_area()
 
 func generate_bridges():
 	# if we expand neighbouring rects by 1 in opposite directions,
@@ -163,6 +169,22 @@ func house_touch(idx, rect):
 				return true
 	return false
 
+func random_place():
+	var r = randi_range(0, total_house_size)
+	for idx in houses.size():
+		var rect : Rect2i = houses[idx]
+		var count = rect.get_area()
+		if r > count:
+			r -= count
+		else:
+			var z : int = rect.position.y
+			while r >= rect.size.x:
+				r -= rect.size.x
+				z += 1
+			return Vector2(0.5 + rect.position.x + r, 0.5 + z)
+	print("ERROR in random place")
+	return houses[0].position
+
 func generate_broccoli():
 	for idx in houses.size():
 		var rect : Rect2i = houses[idx]
@@ -171,3 +193,14 @@ func generate_broccoli():
 				var broc = broccoli_res.instantiate()
 				broc.set_position(Vector3(x + randf_range(0.2,0.8), 0.0, z + randf_range(0.2,0.8)))
 				add_child(broc)
+				
+func generate_bunnies():
+	for idx in start_bunny_count:
+		var pos = random_place()
+		build_bunny(pos)
+
+func build_bunny(pos):
+	var bun = bunny_res.instantiate()
+	bun.set_position(Vector3(pos.x, 0.5, pos.y))
+	add_child(bun)
+	bun.randomize()

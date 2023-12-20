@@ -27,6 +27,7 @@ uv1_world_triplanar = true
 size = Vector3(1, 10, 1)
 
 [node name="house" type="StaticBody3D"]
+collision_mask = 0
 physics_material_override = ExtResource("1_o7yic")
 script = ExtResource("2_nt0g8")
 
@@ -40,6 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 mesh = SubResource("BoxMesh_a5d01")
 surface_material_override/0 = SubResource("StandardMaterial3D_mf0qr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 shape = SubResource("BoxShape3D_jul1v")
