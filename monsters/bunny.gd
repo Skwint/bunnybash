@@ -3,7 +3,6 @@ extends Node
 var bunny_res = preload("res://monsters/bunny.tscn")
 
 var body
-var feet
 var ball
 var model
 var body_shape
@@ -21,10 +20,8 @@ const ball_thrust : float = 0.1
 func _ready():
 	body = get_node("body")
 	ball = get_node("ball")
-	feet = get_node("feet")
 	model = body.get_node("model")
 	body_shape = body.get_node("shape")
-	feet_shape = feet.get_node("shape")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -44,12 +41,13 @@ func _physics_process(delta):
 			ball.apply_central_impulse(Vector3(randf_range(-ball_thrust, ball_thrust), 0.0, randf_range(-ball_thrust, ball_thrust)))
 	
 	# turn to face ball
-
+	body.look_at(ball.position)
+	
 	# drive
 
 func multiply():
 	var angle = PI / 4
-	var move = Vector3(0.0, 0.0, stage_scales[stage] * 0.3)
+	var move = Vector3(0.0, 0.0, - stage_scales[stage] * 0.3)
 	var base_rotation : Vector3 = body.get_rotation()
 	for b in 4:
 		var inst
@@ -70,13 +68,15 @@ func set_stage(s):
 	var scv = Vector3(sc, sc, sc)
 	model.scale = scv
 	body_shape.scale = scv
-	feet_shape.scale = scv
 
 func randomize():
 	set_stage(randi_range(0,stage_scales.size() - 2))
-	model.rotate_y(randf_range(0.0, 2.0 * PI))
+	body.rotate_y(randf_range(0.0, 2.0 * PI))
 
 func reposition(pos):
+	pos.y = max(pos.y, 0.5)
+	
 	body.set_position(pos)
-	feet.set_position(pos)
-	ball.set_position(pos + Vector3(0.0, 0.0, 0.3).rotated(Vector3(0.0,1.0,0.0), body.get_rotation().y))
+	var ballpos = pos + Vector3(0.0, 0.0, 0.3).rotated(Vector3(0.0,1.0,0.0), body.get_rotation().y)
+	ballpos.y = pos.y
+	ball.set_position(ballpos)

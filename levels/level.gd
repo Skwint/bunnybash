@@ -244,4 +244,4 @@ func build_bunny(pos):
 	var bun = bunny_res.instantiate()
 	add_child(bun)
 	bun.randomize()
-	bun.reposition(Vector3(pos.x, 0.5, pos.y))
+	bun.reposition(Vector3(pos.x, 0.0, pos.y))
