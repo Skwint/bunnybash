@@ -196,6 +196,11 @@ func generate_nav_walls():
 				var nav_wall_object = nav_wall_res.instantiate()
 				nav_wall_object.set_position(Vector3(limits.position.x + x + 0.5, 0.0, limits.position.y + y + 0.5))
 				add_child(nav_wall_object)
+				
+	get_node("world_nav_low_x").get_node("shape").position.x = limits.position.x
+	get_node("world_nav_low_z").get_node("shape").position.z = limits.position.y
+	get_node("world_nav_high_x").get_node("shape").position.x = limits.position.x + limits.size.x
+	get_node("world_nav_high_z").get_node("shape").position.z = limits.position.y + limits.size.y
 
 func house_touch(idx, rect):
 	for cidx in houses.size():

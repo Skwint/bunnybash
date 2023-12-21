@@ -17,4 +17,5 @@ physics_material_override = ExtResource("1_0t3m4")
 shape = SubResource("BoxShape3D_4ipj7")
 
 [node name="debug" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_hf12d")

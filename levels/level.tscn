@@ -1,12 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjw522enodsg1"]
+[gd_scene load_steps=10 format=3 uid="uid://bjw522enodsg1"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_1sjvv"]
+[ext_resource type="PhysicsMaterial" uid="uid://cnaw0jyfy0esy" path="res://monsters/nav_ball.phymat" id="3_6nn15"]
 [ext_resource type="PackedScene" uid="uid://cyq4y046uu2nu" path="res://entities/broccoli.tscn" id="3_kfx44"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0wf1n"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0sitv"]
 size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_61a7v"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cccvy"]
+plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_t3wyb"]
+plane = Plane(-1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0c413"]
+plane = Plane(0, 0, -1, 0)
 
 [node name="level" type="Node3D"]
 script = ExtResource("1_1sjvv")
@@ -34,3 +47,39 @@ current = true
 
 [node name="broccoli" parent="." instance=ExtResource("3_kfx44")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51866, 0, 0)
+
+[node name="world_nav_low_x" type="StaticBody3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+physics_material_override = ExtResource("3_6nn15")
+
+[node name="shape" type="CollisionShape3D" parent="world_nav_low_x"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_61a7v")
+
+[node name="world_nav_low_z" type="StaticBody3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+physics_material_override = ExtResource("3_6nn15")
+
+[node name="shape" type="CollisionShape3D" parent="world_nav_low_z"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+shape = SubResource("WorldBoundaryShape3D_cccvy")
+
+[node name="world_nav_high_x" type="StaticBody3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+physics_material_override = ExtResource("3_6nn15")
+
+[node name="shape" type="CollisionShape3D" parent="world_nav_high_x"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_t3wyb")
+
+[node name="world_nav_high_z" type="StaticBody3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+physics_material_override = ExtResource("3_6nn15")
+
+[node name="shape" type="CollisionShape3D" parent="world_nav_high_z"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+shape = SubResource("WorldBoundaryShape3D_0c413")
