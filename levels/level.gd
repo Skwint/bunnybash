@@ -3,12 +3,17 @@ extends Node3D
 var house_res = preload("res://levels/house.tscn")
 var bridge_res = preload("res://levels/bridge.tscn")
 var broccoli_res = preload("res://entities/broccoli.tscn")
-var bunny_res = preload("res://entities/bunny.tscn")
+var bunny_res = preload("res://monsters/bunny.tscn")
+var nav_wall_res = preload("res://levels/nav_wall.tscn")
+
+enum Carto { EMPTY, HOUSE, BRIDGE }
 
 var houses : Array[Rect2i]
 var growable : Array[int]
+var cartography : Array = []
 var bunnies = []
 var total_house_size : int = 0
+var limits : Rect2i
 const houses_wide : int = 5
 const houses_deep : int = 5
 const house_skip_chance : int = 20
@@ -33,7 +38,9 @@ func _process(delta):
 func generate():
 	generate_rects()
 	generate_houses()
+	generate_map()
 	generate_bridges()
+	generate_nav_walls()
 	generate_broccoli()
 	generate_bunnies()
 
@@ -100,6 +107,25 @@ func generate_rects():
 		houses[idx].size.x -= 1
 		houses[idx].size.y -= 1
 
+func generate_map():
+	limits = Rect2i(0,0,1,1)
+	for idx in houses.size():
+		limits = limits.merge(houses[idx])
+	
+	cartography.resize(limits.size.y)
+	for y in limits.size.y:
+		cartography[y] = []
+		cartography[y].resize(limits.size.x)
+		for x in limits.size.x:
+			cartography[y][x] = Carto.EMPTY
+	
+	for idx in houses.size():
+		var rect = houses[idx]
+		for y in range(0, rect.size.y):
+			var row = cartography[y + rect.position.y - limits.position.y]
+			for x in range(0, rect.size.x):
+				row[x + rect.position.x - limits.position.x] = Carto.HOUSE
+
 func generate_houses():
 	for idx in houses.size():
 		var house : Rect2i = houses[idx]
@@ -153,13 +179,23 @@ func generate_bridges():
 			lr.position.y += 1
 
 func build_bridge(rect):
-	var px = randi() % rect.size.x
-	var py = randi() % rect.size.y
-	var pos = Vector3(rect.position.x + px + 0.5, 0.0, rect.position.y + py + 0.5)
+	var px = rect.position.x + randi() % rect.size.x
+	var py = rect.position.y + randi() % rect.size.y
+	var pos = Vector3(px + 0.5, 0.0, py + 0.5)
 	
-	var bridge_object = bridge_res.instantiate();
+	var bridge_object = bridge_res.instantiate()
 	bridge_object.set_position(pos)
 	add_child(bridge_object)
+	cartography[py - limits.position.y][px - limits.position.x] = Carto.BRIDGE
+
+func generate_nav_walls():
+	for y in range(limits.size.y):
+		var row = cartography[y]
+		for x in range(limits.size.x):
+			if row[x] == Carto.EMPTY:
+				var nav_wall_object = nav_wall_res.instantiate()
+				nav_wall_object.set_position(Vector3(limits.position.x + x + 0.5, 0.0, limits.position.y + y + 0.5))
+				add_child(nav_wall_object)
 
 func house_touch(idx, rect):
 	for cidx in houses.size():
@@ -201,6 +237,6 @@ func generate_bunnies():
 
 func build_bunny(pos):
 	var bun = bunny_res.instantiate()
-	bun.set_position(Vector3(pos.x, 0.5, pos.y))
 	add_child(bun)
 	bun.randomize()
+	bun.reposition(Vector3(pos.x, 0.5, pos.y))

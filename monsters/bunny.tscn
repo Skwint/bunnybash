@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://byua1vjajawcf"]
+
+[ext_resource type="Script" path="res://monsters/bunny.gd" id="1_dwrxi"]
+[ext_resource type="PackedScene" uid="uid://u7xkbh7snlf4" path="res://monsters/bunny.glb" id="3_52bwu"]
+[ext_resource type="PhysicsMaterial" uid="uid://cnaw0jyfy0esy" path="res://monsters/nav_ball.phymat" id="3_g2anm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_at8xa"]
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r8yq3"]
+radius = 0.05
+
+[sub_resource type="SphereMesh" id="SphereMesh_obedp"]
+radius = 0.05
+height = 0.1
+
+[node name="bunny" type="Node"]
+script = ExtResource("1_dwrxi")
+
+[node name="bunny" type="RigidBody3D" parent="."]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+
+[node name="model" parent="bunny" instance=ExtResource("3_52bwu")]
+
+[node name="shape" type="CollisionShape3D" parent="bunny"]
+shape = SubResource("SphereShape3D_at8xa")
+
+[node name="ball" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+collision_layer = 0
+collision_mask = 17
+axis_lock_linear_y = true
+physics_material_override = ExtResource("3_g2anm")
+
+[node name="shape" type="CollisionShape3D" parent="ball"]
+shape = SubResource("SphereShape3D_r8yq3")
+
+[node name="debug_model" type="MeshInstance3D" parent="ball"]
+mesh = SubResource("SphereMesh_obedp")

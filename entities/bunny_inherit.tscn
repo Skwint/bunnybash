@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp6f5nxcv4l0j"]
-
-[ext_resource type="PackedScene" uid="uid://boxvvuqw6ptcq" path="res://entities/bunny.blend" id="1_ue0sw"]
-
-[node name="bunny_inherit" instance=ExtResource("1_ue0sw")]

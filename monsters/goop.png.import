@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yw1fc5o56y8n"
-path.s3tc="res://.godot/imported/goop.png-5a5edbadaea08a9ec8e81b69e5b37e49.s3tc.ctex"
+path.s3tc="res://.godot/imported/goop.png-2887103576f3a0466689e8c6abed32f1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://entities/goop.png"
-dest_files=["res://.godot/imported/goop.png-5a5edbadaea08a9ec8e81b69e5b37e49.s3tc.ctex"]
+source_file="res://monsters/goop.png"
+dest_files=["res://.godot/imported/goop.png-2887103576f3a0466689e8c6abed32f1.s3tc.ctex"]
 
 [params]
 

@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 ui_stack_signals="*res://ui/ui_stack_signals.gd"
 
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
+
 [gui]
 
 theme/custom_font="res://theme/WEBLBRG_.TTF"
@@ -29,6 +34,7 @@ theme/custom_font="res://theme/WEBLBRG_.TTF"
 3d_physics/layer_2="broccoli"
 3d_physics/layer_3="monster"
 3d_physics/layer_4="mahou"
+3d_physics/layer_5="navigation"
 
 [rendering]
 

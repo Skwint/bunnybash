@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://boxvvuqw6ptcq"
-path="res://.godot/imported/bunny.blend-dfe3c0c36c25f4f77f76a99e0d407e1b.scn"
+path="res://.godot/imported/bunny.blend-6c27772be95a3753061253a0a04764a8.scn"
 
 [deps]
 
-source_file="res://entities/bunny.blend"
-dest_files=["res://.godot/imported/bunny.blend-dfe3c0c36c25f4f77f76a99e0d407e1b.scn"]
+source_file="res://monsters/bunny.blend"
+dest_files=["res://.godot/imported/bunny.blend-6c27772be95a3753061253a0a04764a8.scn"]
 
 [params]
 
