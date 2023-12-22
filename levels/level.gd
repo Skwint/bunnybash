@@ -43,6 +43,7 @@ func generate():
 	generate_nav_walls()
 	generate_broccoli()
 	generate_bunnies()
+	generate_mahou()
 
 func generate_rects():
 	for z in houses_deep:
@@ -246,10 +247,19 @@ func build_bunny(pos):
 	bun.randomize()
 	bun.reposition(Vector3(pos.x, 0.0, pos.y))
 
+func spawn(obj):
+	var pos = random_place()
+	obj.spawn(pos)
+
+func generate_mahou():
+	var res = load("res://mahous/mahou.tscn")
+	var mah = res.instantiate()
+	add_child(mah)
+	spawn(mah)
 
 # Something fell out of the map
 func _on_death_body_entered(body):
 	if body.is_in_group("monster"):
 		body.get_parent().queue_free()
 	elif body.is_in_group("mahou"):
-		body.get_parent().respawn()
+		spawn(body)

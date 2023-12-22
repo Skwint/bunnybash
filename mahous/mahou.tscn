@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl3xlhoo6t68"]
+
+[ext_resource type="Script" path="res://mahous/mahou.gd" id="1_jv4os"]
+[ext_resource type="PhysicsMaterial" uid="uid://b85o18fu2mcpo" path="res://mahous/mahou.phymat" id="1_r55mp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q4fnm"]
+height = 1.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vik8b"]
+height = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8usn4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_udmgw"]
+size = Vector3(0.7, 0.7, 0.7)
+
+[node name="mahou" type="RigidBody3D" groups=["mahou"]]
+collision_layer = 8
+collision_mask = 13
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = ExtResource("1_r55mp")
+script = ExtResource("1_jv4os")
+
+[node name="shape" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_q4fnm")
+
+[node name="model" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_vik8b")
+
+[node name="feet" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+collision_layer = 0
+collision_mask = 13
+axis_lock_angular_y = true
+physics_material_override = ExtResource("1_r55mp")
+
+[node name="shape" type="CollisionShape3D" parent="feet"]
+shape = SubResource("SphereShape3D_8usn4")
+
+[node name="debug" type="MeshInstance3D" parent="feet"]
+mesh = SubResource("BoxMesh_udmgw")
+
+[node name="motor" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+node_a = NodePath("..")
+node_b = NodePath("../feet")
+angular_motor_x/enabled = true
+angular_motor_z/enabled = true
