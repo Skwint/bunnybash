@@ -245,3 +245,11 @@ func build_bunny(pos):
 	add_child(bun)
 	bun.randomize()
 	bun.reposition(Vector3(pos.x, 0.0, pos.y))
+
+
+# Something fell out of the map
+func _on_death_body_entered(body):
+	if body.is_in_group("monster"):
+		body.get_parent().queue_free()
+	elif body.is_in_group("mahou"):
+		body.get_parent().respawn()

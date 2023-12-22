@@ -17,7 +17,7 @@ radius = 0.02
 [node name="bunny" type="Node"]
 script = ExtResource("1_dwrxi")
 
-[node name="body" type="RigidBody3D" parent="."]
+[node name="body" type="RigidBody3D" parent="." groups=["monster"]]
 collision_layer = 4
 collision_mask = 13
 axis_lock_angular_x = true
