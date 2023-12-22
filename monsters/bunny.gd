@@ -12,7 +12,8 @@ var stage : int
 var stage_scales = [0.5, 1.0, 1.5, 2.0]
 
 const fertility : float = 0.2 / 60.0
-const min_ball_distance : float = 1.0
+const min_ball_distance : float = 0.2
+const med_ball_distance : float = 1.0
 const max_ball_distance : float = 3.0
 const max_ball_velocity : float = 1.5
 const max_speed : float = 1.0
@@ -48,8 +49,11 @@ func _physics_process(delta):
 			multiply()
 			
 	# ball thrust
+	var is_ball_close = false
 	var distsq = ball.position.distance_squared_to(body.position)
 	if distsq < min_ball_distance:
+		is_ball_close = true
+	if distsq < med_ball_distance:
 		ball.apply_central_impulse(ball_repel * body.position.direction_to(ball.position))
 	elif distsq < max_ball_distance:
 		if ball.linear_velocity.length_squared() < max_ball_velocity:
@@ -60,10 +64,11 @@ func _physics_process(delta):
 		body.look_at(ball.position)
 		
 		# drive
-		var dir = body.position.direction_to(ball.position)
-		var speed = body.linear_velocity.dot(dir)
-		if speed < max_speed:
-			body.apply_central_impulse(dir * bunny_thrust)
+		if not is_ball_close:
+			var dir = body.position.direction_to(ball.position)
+			var speed = body.linear_velocity.dot(dir)
+			if speed < max_speed:
+				body.apply_central_impulse(dir * bunny_thrust)
 
 func multiply():
 	var angle = PI / 4
