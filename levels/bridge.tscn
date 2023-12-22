@@ -12,14 +12,14 @@ albedo_color = Color(0.129412, 0.141176, 1, 1)
 material = SubResource("StandardMaterial3D_0fsp0")
 size = Vector3(1, 0.2, 1)
 
-[node name="bridge" type="StaticBody3D"]
+[node name="bridge" type="StaticBody3D" groups=["floor"]]
 collision_mask = 0
 physics_material_override = ExtResource("1_tid2a")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_y05rq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="model" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 mesh = SubResource("BoxMesh_o31mi")
