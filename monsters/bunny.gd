@@ -28,6 +28,7 @@ const max_speed : float = 1.0
 const ball_thrust : float = 0.2
 const ball_repel : float = 0.03
 const bunny_thrust : float = 0.2
+const max_bunnies : int = 80
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,8 +53,10 @@ func _physics_process(delta):
 		
 		# split
 		if stage > 1:
-			if randf_range(0.0, 1.0) < fertility * stage:
-				multiply()
+			var count = get_tree().get_nodes_in_group("monster").size()
+			if count < max_bunnies - 3:
+				if randf_range(0.0, 1.0) < fertility * stage:
+					multiply()
 				
 		# ball thrust
 		var is_ball_close = false
