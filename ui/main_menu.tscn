@@ -3,16 +3,23 @@
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_b3su1"]
 
 [node name="mainMenu" type="VBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_direction = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -41.5
+offset_right = 83.0
+offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b3su1")
 
-[node name="btnSinglePlayer" type="Button" parent="."]
+[node name="play" type="Button" parent="."]
 layout_mode = 2
-text = "Single Player"
+text = "play"
 
 [node name="btnHelp" type="Button" parent="."]
 layout_mode = 2
@@ -22,6 +29,6 @@ text = "Help"
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="btnSinglePlayer" to="." method="_on_btn_single_player_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="btnHelp" to="." method="_on_btn_help_pressed"]
 [connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
