@@ -4,12 +4,15 @@ var thrust : float = 50.0
 var max_speed : float = 20.0
 var model : MeshInstance3D
 var camera : Camera3D
+var target : Vector3
+var aim : Vector3
+var reticle : Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	model = get_node("model")
 	camera = get_node("camera")
-
+	reticle = get_node("reticle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -17,6 +20,13 @@ func _process(_delta):
 
 
 func _physics_process(_delta):
+	var mousePos = get_viewport().get_mouse_position()
+	var origin = camera.project_ray_origin(mousePos)
+	var direction = camera.project_ray_normal(mousePos)
+	target = origin - direction * (origin.y / direction.y)
+	aim = (target - position).normalized()
+	reticle.global_position = target
+
 	var is_on_floor = false
 	if position.y > 0.1:
 		var contacts = get_colliding_bodies()

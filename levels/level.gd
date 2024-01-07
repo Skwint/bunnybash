@@ -5,6 +5,7 @@ var bridge_res = preload("res://levels/bridge.tscn")
 var broccoli_res = preload("res://entities/broccoli.tscn")
 var bunny_res = preload("res://monsters/bunny.tscn")
 var nav_wall_res = preload("res://levels/nav_wall.tscn")
+var globals
 
 enum Carto { EMPTY, HOUSE, BRIDGE }
 
@@ -27,6 +28,7 @@ const start_bunny_count : int = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	globals = get_node("/root/globals")
 	generate()
 
 
@@ -252,7 +254,7 @@ func spawn(obj):
 	obj.spawn(pos)
 
 func generate_mahou():
-	var res = load("res://mahous/mahou.tscn")
+	var res = load(globals.player_character)
 	var mah = res.instantiate()
 	add_child(mah)
 	spawn(mah)

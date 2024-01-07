@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ui_stack_signals="*res://ui/ui_stack_signals.gd"
+globals="*res://globals.gd"
 
 [filesystem]
 
@@ -73,6 +74,7 @@ action_3={
 3d_physics/layer_3="monster"
 3d_physics/layer_4="mahou"
 3d_physics/layer_5="navigation"
+3d_physics/layer_6="ground_plane"
 
 [rendering]
 

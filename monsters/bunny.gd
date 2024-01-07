@@ -19,7 +19,7 @@ var state : State = State.ACTIVE
 var resize_time : float = 0.0
 const max_resize_time : float = 0.5
 
-const fertility : float = 0.1 / 60.0
+const fertility : float = 0.3 / 60.0
 const min_ball_distance : float = 0.2
 const med_ball_distance : float = 1.0
 const max_ball_distance : float = 3.0

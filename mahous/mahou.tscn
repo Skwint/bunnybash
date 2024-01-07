@@ -31,3 +31,5 @@ mesh = SubResource("CapsuleMesh_vik8b")
 
 [node name="camera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 2, 2, 2)
+
+[node name="reticle" type="Node3D" parent="."]
