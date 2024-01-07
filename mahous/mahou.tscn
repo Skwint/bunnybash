@@ -4,9 +4,11 @@
 [ext_resource type="PhysicsMaterial" uid="uid://b85o18fu2mcpo" path="res://mahous/mahou.phymat" id="1_r55mp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q4fnm"]
+radius = 0.25
 height = 1.5
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vik8b"]
+radius = 0.25
 height = 1.5
 
 [node name="mahou" type="RigidBody3D" groups=["mahou"]]
@@ -16,6 +18,9 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 physics_material_override = ExtResource("1_r55mp")
+max_contacts_reported = 3
+contact_monitor = true
+linear_damp = 20.0
 script = ExtResource("1_jv4os")
 
 [node name="shape" type="CollisionShape3D" parent="."]
