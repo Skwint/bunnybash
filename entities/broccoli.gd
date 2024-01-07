@@ -19,7 +19,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func _physics_process(delta):
@@ -53,7 +53,6 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if state == State.READY and body.is_in_group("monster"):
 		grow_time = 0.0
-		coll.disabled = true
 		state = State.SHRINKING
 		body.get_parent().feed()
 		

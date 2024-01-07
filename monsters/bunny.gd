@@ -38,7 +38,7 @@ func _ready():
 	body_shape = body.get_node("shape")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func _physics_process(delta):
