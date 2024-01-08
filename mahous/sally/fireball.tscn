@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg7266ov68myd"]
+
+[ext_resource type="Script" path="res://mahous/sally/fireball.gd" id="1_eioeo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qwufd"]
+radius = 0.1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_arn8r"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00bp7"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4g8n4"]
+material = SubResource("StandardMaterial3D_00bp7")
+radius = 0.03
+height = 0.06
+radial_segments = 16
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2axf"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vqh31"]
+material = SubResource("StandardMaterial3D_f2axf")
+radius = 0.1
+height = 0.2
+radial_segments = 16
+rings = 8
+
+[node name="fireball" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 4
+axis_lock_linear_y = true
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_eioeo")
+
+[node name="shape" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qwufd")
+
+[node name="particles" type="GPUParticles3D" parent="."]
+gi_mode = 0
+amount = 32
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_arn8r")
+draw_pass_1 = SubResource("SphereMesh_4g8n4")
+
+[node name="model" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_vqh31")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

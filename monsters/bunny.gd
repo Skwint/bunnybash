@@ -86,8 +86,11 @@ func _physics_process(delta):
 		if resize_time >= max_resize_time:
 			rescale(1.0)
 			stage = new_stage
-			state = State.ACTIVE
-			ball.position.y = body_shape.scale.y * 0.28
+			if (stage < 1):
+				queue_free()
+			else:
+				state = State.ACTIVE
+				ball.position.y = body_shape.scale.y * 0.28
 		else:
 			rescale(resize_time / max_resize_time)
 
@@ -135,3 +138,6 @@ func reposition(pos):
 
 func feed():
 	set_stage(stage + 1)
+
+func kill():
+	set_stage(0)

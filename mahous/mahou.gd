@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-var thrust : float = 50.0
+var thrust : float = 150.0
 var max_speed : float = 20.0
 var model : MeshInstance3D
 var camera : Camera3D
@@ -39,23 +39,22 @@ func _physics_process(_delta):
 		var dx = 0.0
 		var dz = 0.0
 		if Input.is_action_pressed("move_right"):
-			dx += 1.0
-			dz -= 1.0
+			dx = 1.0
 		if Input.is_action_pressed("move_left"):
-			dx -= 1.0
-			dz += 1.0
+			dx = -1.0
 		if Input.is_action_pressed("move_up"):
-			dx -= 1.0
-			dz -= 1.0
+			dz = -1.0
 		if Input.is_action_pressed("move_down"):
-			dx += 1.0
-			dz += 1.0
+			dz = 1.0
 		
 		if dx != 0.0 and dz != 0.0:
-			dx *= 0.707
-			dz *= 0.707
+			dx = dx * 0.707
+			dz = dz * 0.707
 
-		apply_central_force(Vector3(dx * thrust, 0.0, dz * thrust))
+		var ddx = 0.707 * dx + 0.707 * dz
+		var ddz = 0.707 * dz - 0.707 * dx
+
+		apply_central_force(Vector3(ddx * thrust, 0.0, ddz * thrust))
 
 
 func spawn(pos):
