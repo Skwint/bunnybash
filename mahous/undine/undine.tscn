@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://chidcgbyrvvwi"]
+
+[ext_resource type="PackedScene" uid="uid://dl3xlhoo6t68" path="res://mahous/mahou.tscn" id="1_vw5lq"]
+[ext_resource type="Script" path="res://mahous/undine/undine.gd" id="2_q3as5"]
+[ext_resource type="Texture2D" uid="uid://cwy30fsaf41nu" path="res://mahous/undine/sigil.png" id="2_ysu7o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_teia3"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_ysu7o")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4jf0p"]
+material = SubResource("StandardMaterial3D_teia3")
+size = Vector2(0.3, 0.3)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvq1h"]
+albedo_color = Color(0, 0.482353, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_klx06"]
+material = SubResource("StandardMaterial3D_dvq1h")
+radius = 0.3
+height = 1.5
+
+[node name="mahou" instance=ExtResource("1_vw5lq")]
+script = ExtResource("2_q3as5")
+
+[node name="sigil" type="MeshInstance3D" parent="reticle" index="0"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.01, 0)
+mesh = SubResource("QuadMesh_4jf0p")
+
+[node name="model" type="MeshInstance3D" parent="model" index="0"]
+mesh = SubResource("CapsuleMesh_klx06")

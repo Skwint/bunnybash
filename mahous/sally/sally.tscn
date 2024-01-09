@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv631bf2boypd"]
+[gd_scene load_steps=8 format=3 uid="uid://bv631bf2boypd"]
 
 [ext_resource type="PackedScene" uid="uid://dl3xlhoo6t68" path="res://mahous/mahou.tscn" id="1_n4gvj"]
 [ext_resource type="Script" path="res://mahous/Sally/sally.gd" id="2_xksx6"]
@@ -14,11 +14,21 @@ material = SubResource("StandardMaterial3D_fagyp")
 size = Vector2(0.3, 0.3)
 orientation = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfnch"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_464u7"]
+material = SubResource("StandardMaterial3D_wfnch")
+radius = 0.3
+height = 1.5
+
 [node name="mahou" instance=ExtResource("1_n4gvj")]
-mass = 2.0
 gravity_scale = 4.0
 script = ExtResource("2_xksx6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="reticle" index="0"]
+[node name="sigil" type="MeshInstance3D" parent="reticle" index="0"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.01, 0)
 mesh = SubResource("QuadMesh_n1sws")
+
+[node name="model" type="MeshInstance3D" parent="model" index="0"]
+mesh = SubResource("CapsuleMesh_464u7")

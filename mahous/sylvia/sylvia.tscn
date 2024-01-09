@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfacyetf4s6rn"]
+
+[ext_resource type="PackedScene" uid="uid://dl3xlhoo6t68" path="res://mahous/mahou.tscn" id="1_nehls"]
+[ext_resource type="Script" path="res://mahous/sylvia/sylvia.gd" id="2_8cx5n"]
+[ext_resource type="Texture2D" uid="uid://bb31gn1mem22i" path="res://mahous/sylvia/sigil.png" id="2_a6gqe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grq74"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_a6gqe")
+
+[sub_resource type="QuadMesh" id="QuadMesh_nx7n7"]
+material = SubResource("StandardMaterial3D_grq74")
+size = Vector2(0.3, 0.3)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3f1od"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_caujh"]
+material = SubResource("StandardMaterial3D_3f1od")
+radius = 0.3
+height = 1.5
+
+[node name="mahou" instance=ExtResource("1_nehls")]
+collision_mask = 45
+script = ExtResource("2_8cx5n")
+
+[node name="sigil" type="MeshInstance3D" parent="reticle" index="0"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.01, 0)
+mesh = SubResource("QuadMesh_nx7n7")
+
+[node name="model" type="MeshInstance3D" parent="model" index="0"]
+mesh = SubResource("CapsuleMesh_caujh")

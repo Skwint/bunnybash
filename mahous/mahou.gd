@@ -1,8 +1,7 @@
 extends RigidBody3D
 
-var thrust : float = 150.0
-var max_speed : float = 20.0
-var model : MeshInstance3D
+var thrust : float = 250.0
+var model : Node3D
 var camera : Camera3D
 var target : Vector3
 var aim : Vector3
@@ -24,8 +23,10 @@ func _physics_process(_delta):
 	var origin = camera.project_ray_origin(mousePos)
 	var direction = camera.project_ray_normal(mousePos)
 	target = origin - direction * (origin.y / direction.y)
-	aim = (target - position).normalized()
 	reticle.global_position = target
+	target.y = position.y
+	aim = (target - position).normalized()
+	model.look_at(target);
 
 	var is_on_floor = false
 	if position.y > 0.1:
