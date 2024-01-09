@@ -75,6 +75,7 @@ action_3={
 3d_physics/layer_4="mahou"
 3d_physics/layer_5="navigation"
 3d_physics/layer_6="ground_plane"
+3d_physics/layer_7="weapon"
 
 [rendering]
 

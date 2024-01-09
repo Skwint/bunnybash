@@ -1,7 +1,8 @@
 extends "res://mahous/mahou.gd"
 
-var fireball_res = preload("res://mahous/sally/fireball.tscn")
+var fireball_res = preload("fireball.tscn")
 const fireball_speed : float = 10.0
+const fireball_cost : float = 0.05
 var action_1_cooldown : float = 0.0
 var action_1_cooldown_max : float = 0.5
 
@@ -17,7 +18,8 @@ func _process(delta):
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	if Input.is_action_pressed("action_1") and action_1_cooldown <= 0.0:
+	if Input.is_action_pressed("action_1") and action_1_cooldown <= 0.0 and mana >= fireball_cost:
+		set_mana(mana - fireball_cost)
 		var ball = fireball_res.instantiate()
 		get_node("/root").add_child(ball)
 		ball.global_transform = global_transform

@@ -25,7 +25,6 @@ height = 1.5
 
 [node name="mahou" instance=ExtResource("1_wxkeu")]
 mass = 6.0
-linear_damp = 30.0
 script = ExtResource("2_g26sx")
 
 [node name="sigil" type="MeshInstance3D" parent="reticle" index="0"]
