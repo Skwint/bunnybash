@@ -21,7 +21,6 @@ script = ExtResource("1_dwrxi")
 collision_layer = 4
 collision_mask = 77
 axis_lock_angular_x = true
-axis_lock_angular_y = true
 axis_lock_angular_z = true
 physics_material_override = ExtResource("2_dx4ev")
 max_contacts_reported = 3

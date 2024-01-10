@@ -4,7 +4,7 @@ var fireball_res = preload("fireball.tscn")
 const fireball_speed : float = 10.0
 const fireball_cost : float = 0.05
 var action_1_cooldown : float = 0.0
-var action_1_cooldown_max : float = 0.5
+const action_1_cooldown_max : float = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
