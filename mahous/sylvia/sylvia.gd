@@ -1,5 +1,7 @@
 extends "res://mahous/mahou.gd"
 
+var char_model_res = preload("sylvia.glb")
+var char_model
 var whirlwind_res = preload("whirlwind.tscn")
 const whirlwind_speed : float = 2.0
 const whirlwind_cost : float = 0.2
@@ -11,6 +13,8 @@ const action_2_cooldown_max : float = 0.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
+	char_model = char_model_res.instantiate()
+	$model.add_child(char_model)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dk6mun8i7aa0x"]
+
+[ext_resource type="Script" path="res://mahous/undine/blorble.gd" id="1_6yipw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8baux"]
+radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q45yr"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 1, 0.501961)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qq4w2"]
+material = SubResource("StandardMaterial3D_q45yr")
+radius = 0.4
+height = 0.8
+radial_segments = 32
+rings = 16
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eieae"]
+radius = 0.3
+
+[node name="blorble" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 0
+input_ray_pickable = false
+axis_lock_linear_y = true
+max_contacts_reported = 3
+contact_monitor = true
+script = ExtResource("1_6yipw")
+
+[node name="shape" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8baux")
+
+[node name="model" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_qq4w2")
+
+[node name="capture" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="shape" type="CollisionShape3D" parent="capture"]
+shape = SubResource("SphereShape3D_eieae")
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="body_entered" from="capture" to="." method="_on_area_3d_body_entered"]

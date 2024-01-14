@@ -2,7 +2,7 @@ extends Node
 
 var bunny_res = preload("res://monsters/bunny.tscn")
 
-enum State { ACTIVE, RESIZING }
+enum State { ACTIVE, RESIZING, CAPTURED }
 
 var body
 var ball
@@ -18,6 +18,7 @@ var stage_scale = 0.5
 var state : State = State.ACTIVE
 var resize_time : float = 0.0
 const max_resize_time : float = 0.5
+var captured : bool = false
 
 const fertility : float = 0.3 / 60.0
 const min_ball_distance : float = 0.2
@@ -42,57 +43,58 @@ func _process(_delta):
 	pass
 	
 func _physics_process(delta):
-	if (state == State.ACTIVE):
-		var is_on_floor = false
-		if body.position.y > 0.1:
-			var contacts = body.get_colliding_bodies()
-			for contact in contacts:
-				if contact.is_in_group("floor"):
-					is_on_floor = true
-					break
-		
-		# split
-		if stage > 1:
-			var count = get_tree().get_nodes_in_group("monster").size()
-			if count < max_bunnies - 3:
-				if randf_range(0.0, 1.0) < fertility * stage:
-					multiply()
-				
-		# ball thrust
-		var is_ball_close = false
-		var distsq = ball.position.distance_squared_to(body.position)
-		if distsq < min_ball_distance:
-			is_ball_close = true
-#		if distsq < med_ball_distance:
-#			ball.apply_central_impulse(ball_repel * body.position.direction_to(ball.position))
-		if distsq < max_ball_distance:
-			var rat = ball.linear_velocity.length_squared() / max_ball_velocity
-			if rat < 1.0:
-				var thrust = ball_thrust * (1.0 - rat)
-				ball.apply_central_impulse(Vector3(randf_range(-thrust, thrust), 0.0, randf_range(-ball_thrust, ball_thrust)))
-		
-		if is_on_floor:
-			# turn to face ball
-			body.look_at(ball.position)
+	if (not captured):
+		if (state == State.ACTIVE):
+			var is_on_floor = false
+			if body.position.y > 0.1:
+				var contacts = body.get_colliding_bodies()
+				for contact in contacts:
+					if contact.is_in_group("floor"):
+						is_on_floor = true
+						break
 			
-			# drive
-			if not is_ball_close:
-				var dir = body.position.direction_to(ball.position)
-				var speed = body.linear_velocity.dot(dir)
-				if speed < max_speed:
-					body.apply_central_impulse(dir * bunny_thrust)
-	else: # state.GROWING
-		resize_time += delta
-		if resize_time >= max_resize_time:
-			rescale(1.0)
-			stage = new_stage
-			if (stage < 1):
-				queue_free()
+			# split
+			if stage > 1:
+				var count = get_tree().get_nodes_in_group("monster").size()
+				if count < max_bunnies - 3:
+					if randf_range(0.0, 1.0) < fertility * stage:
+						multiply()
+					
+			# ball thrust
+			var is_ball_close = false
+			var distsq = ball.position.distance_squared_to(body.position)
+			if distsq < min_ball_distance:
+				is_ball_close = true
+	#		if distsq < med_ball_distance:
+	#			ball.apply_central_impulse(ball_repel * body.position.direction_to(ball.position))
+			if distsq < max_ball_distance:
+				var rat = ball.linear_velocity.length_squared() / max_ball_velocity
+				if rat < 1.0:
+					var thrust = ball_thrust * (1.0 - rat)
+					ball.apply_central_impulse(Vector3(randf_range(-thrust, thrust), 0.0, randf_range(-ball_thrust, ball_thrust)))
+			
+			if is_on_floor:
+				# turn to face ball
+				body.look_at(ball.position)
+				
+				# drive
+				if not is_ball_close:
+					var dir = body.position.direction_to(ball.position)
+					var speed = body.linear_velocity.dot(dir)
+					if speed < max_speed:
+						body.apply_central_impulse(dir * bunny_thrust)
+		else: # state.GROWING
+			resize_time += delta
+			if resize_time >= max_resize_time:
+				rescale(1.0)
+				stage = new_stage
+				if (stage < 1):
+					queue_free()
+				else:
+					state = State.ACTIVE
+					ball.position.y = body_shape.scale.y * 0.28
 			else:
-				state = State.ACTIVE
-				ball.position.y = body_shape.scale.y * 0.28
-		else:
-			rescale(resize_time / max_resize_time)
+				rescale(resize_time / max_resize_time)
 
 func multiply():
 	var angle = PI / 4
@@ -141,3 +143,10 @@ func feed():
 
 func kill():
 	set_stage(0)
+
+func capture():
+	captured = true
+
+func release():
+	captured = false
+
