@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0ixri3p3bvnc"]
+
+[ext_resource type="PackedScene" uid="uid://dmp2boxc1arer" path="res://mahous/undine/undine.glb" id="1_atswu"]
+[ext_resource type="Texture2D" uid="uid://q1d3tu1oytoj" path="res://mahous/undine/body.png" id="2_uiuvm"]
+[ext_resource type="Texture2D" uid="uid://dtm0tbsk0s7w6" path="res://mahous/undine/skirt.png" id="3_i7vn5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4r0p"]
+albedo_texture = ExtResource("2_uiuvm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0c63"]
+albedo_texture = ExtResource("3_i7vn5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ousi"]
+albedo_color = Color(0, 0, 1, 1)
+
+[node name="undine" instance=ExtResource("1_atswu")]
+
+[node name="body" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_l4r0p")
+
+[node name="skirt" parent="Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_b0c63")
+
+[node name="UndineHair" parent="Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2ousi")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://chidcgbyrvvwi"]
+[gd_scene load_steps=7 format=3 uid="uid://chidcgbyrvvwi"]
 
 [ext_resource type="PackedScene" uid="uid://dl3xlhoo6t68" path="res://mahous/mahou.tscn" id="1_vw5lq"]
 [ext_resource type="Script" path="res://mahous/undine/undine.gd" id="2_q3as5"]
 [ext_resource type="Texture2D" uid="uid://cwy30fsaf41nu" path="res://mahous/undine/sigil.png" id="2_ysu7o"]
+[ext_resource type="PackedScene" uid="uid://b0ixri3p3bvnc" path="res://mahous/undine/undine_model.tscn" id="4_ulro8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_teia3"]
 transparency = 1
@@ -21,3 +22,5 @@ script = ExtResource("2_q3as5")
 [node name="sigil" type="MeshInstance3D" parent="reticle" index="0"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.01, 0)
 mesh = SubResource("QuadMesh_4jf0p")
+
+[node name="undine" parent="model" index="0" instance=ExtResource("4_ulro8")]

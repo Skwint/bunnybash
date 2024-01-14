@@ -12,6 +12,7 @@ var mana_regen : float = 0.05 / 60.0
 var mana_bar : MeshInstance3D
 var floor_damp : float = 30.0
 var move_dir : Vector3
+var animation : AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,8 +65,10 @@ func _physics_process(_delta):
 			move_dir.z = 0.707 * dz - 0.707 * dx
 			apply_central_force(thrust * move_dir)
 			model.look_at(model.global_position - move_dir) # back to front model
+			animation.play("run")
 		else:
 			model.look_at(model.global_position - aim)
+			animation.play("idle")
 
 	else:
 		linear_damp = 0

@@ -1,7 +1,5 @@
 extends "res://mahous/mahou.gd"
 
-var char_model_res = preload("undine.glb")
-var char_model
 var blorble_res = preload("blorble.tscn")
 const blorble_speed : float = 7.0
 var action_1_cooldown : float = 0.0
@@ -12,8 +10,7 @@ const attract_force : float = 10.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
-	char_model = char_model_res.instantiate()
-	$model.add_child(char_model)
+	animation = $model.find_child("AnimationPlayer")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

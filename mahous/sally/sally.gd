@@ -1,7 +1,5 @@
 extends "res://mahous/mahou.gd"
 
-var char_model_res = preload("sally.glb")
-var char_model
 var fireball_res = preload("fireball.tscn")
 const fireball_speed : float = 10.0
 const fireball_cost : float = 0.05
@@ -11,8 +9,7 @@ const action_1_cooldown_max : float = 0.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
-	char_model = char_model_res.instantiate()
-	$model.add_child(char_model)
+	animation = $model.find_child("AnimationPlayer")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://1tnkuuxxvmeu"]
+[gd_scene load_steps=7 format=3 uid="uid://1tnkuuxxvmeu"]
 
 [ext_resource type="PackedScene" uid="uid://dl3xlhoo6t68" path="res://mahous/mahou.tscn" id="1_wxkeu"]
 [ext_resource type="Texture2D" uid="uid://d043i36t21lra" path="res://mahous/gwen/sigil.png" id="2_7poeg"]
 [ext_resource type="Script" path="res://mahous/gwen/gwen.gd" id="2_g26sx"]
+[ext_resource type="PackedScene" uid="uid://7nhfw3g2tksr" path="res://mahous/gwen/gwen_model.tscn" id="4_rd1um"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhywt"]
 transparency = 1
@@ -22,3 +23,5 @@ script = ExtResource("2_g26sx")
 [node name="sigil" type="MeshInstance3D" parent="reticle" index="0"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.01, 0)
 mesh = SubResource("QuadMesh_hd0vy")
+
+[node name="gwen" parent="model" index="0" instance=ExtResource("4_rd1um")]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfacyetf4s6rn"]
+[gd_scene load_steps=7 format=3 uid="uid://dfacyetf4s6rn"]
 
 [ext_resource type="PackedScene" uid="uid://dl3xlhoo6t68" path="res://mahous/mahou.tscn" id="1_nehls"]
 [ext_resource type="Script" path="res://mahous/sylvia/sylvia.gd" id="2_8cx5n"]
 [ext_resource type="Texture2D" uid="uid://bb31gn1mem22i" path="res://mahous/sylvia/sigil.png" id="2_a6gqe"]
+[ext_resource type="PackedScene" uid="uid://bl5t2vxw4ywd0" path="res://mahous/sylvia/sylvia_model.tscn" id="4_r3kiy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grq74"]
 transparency = 1
@@ -22,3 +23,5 @@ script = ExtResource("2_8cx5n")
 [node name="sigil" type="MeshInstance3D" parent="reticle" index="0"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.01, 0)
 mesh = SubResource("QuadMesh_nx7n7")
+
+[node name="sylvia" parent="model" index="0" instance=ExtResource("4_r3kiy")]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ls6dqqs2fsmx"]
+
+[ext_resource type="PackedScene" uid="uid://miv581kq8lo" path="res://mahous/sally/sally.glb" id="1_png3f"]
+
+[node name="sally" instance=ExtResource("1_png3f")]
