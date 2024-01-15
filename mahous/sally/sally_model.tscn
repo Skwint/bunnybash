@@ -1,5 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://ls6dqqs2fsmx"]
+[gd_scene load_steps=7 format=3 uid="uid://ls6dqqs2fsmx"]
 
 [ext_resource type="PackedScene" uid="uid://miv581kq8lo" path="res://mahous/sally/sally.glb" id="1_png3f"]
+[ext_resource type="Texture2D" uid="uid://cju8asfipna7r" path="res://mahous/sally/body.png" id="2_gv5bl"]
+[ext_resource type="Texture2D" uid="uid://dbrgxdm6he8r1" path="res://mahous/sally/skirt.png" id="3_3eyf8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mssy5"]
+albedo_texture = ExtResource("2_gv5bl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuajy"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvvky"]
+transparency = 1
+albedo_texture = ExtResource("3_3eyf8")
 
 [node name="sally" instance=ExtResource("1_png3f")]
+
+[node name="body" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mssy5")
+
+[node name="SallyHair" parent="Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_iuajy")
+
+[node name="skirt" parent="Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nvvky")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv631bf2boypd"]
+[gd_scene load_steps=7 format=3 uid="uid://bv631bf2boypd"]
 
 [ext_resource type="PackedScene" uid="uid://dl3xlhoo6t68" path="res://mahous/mahou.tscn" id="1_n4gvj"]
 [ext_resource type="Script" path="res://mahous/Sally/sally.gd" id="2_xksx6"]
 [ext_resource type="Texture2D" uid="uid://ssg85wc8k4c" path="res://mahous/sally/sigil.png" id="3_vrkd5"]
+[ext_resource type="PackedScene" uid="uid://ls6dqqs2fsmx" path="res://mahous/sally/sally_model.tscn" id="4_qq6ck"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fagyp"]
 transparency = 1
@@ -20,3 +21,5 @@ script = ExtResource("2_xksx6")
 [node name="sigil" type="MeshInstance3D" parent="reticle" index="0"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.01, 0)
 mesh = SubResource("QuadMesh_n1sws")
+
+[node name="sally" parent="model" index="0" instance=ExtResource("4_qq6ck")]

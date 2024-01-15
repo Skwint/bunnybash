@@ -19,6 +19,9 @@ orientation = 1
 [node name="mahou" instance=ExtResource("1_vw5lq")]
 script = ExtResource("2_q3as5")
 
+[node name="camera" parent="." index="1"]
+current = true
+
 [node name="sigil" type="MeshInstance3D" parent="reticle" index="0"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.01, 0)
 mesh = SubResource("QuadMesh_4jf0p")
