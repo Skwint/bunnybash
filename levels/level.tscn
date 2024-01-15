@@ -46,7 +46,7 @@ transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866026, 0.499999, -0
 current = true
 
 [node name="world_nav_low_x" type="StaticBody3D" parent="."]
-collision_layer = 16
+collision_layer = 144
 collision_mask = 0
 physics_material_override = ExtResource("3_6nn15")
 
@@ -55,7 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_61a7v")
 
 [node name="world_stop_low_y" type="StaticBody3D" parent="."]
-collision_layer = 16
+collision_layer = 144
 collision_mask = 0
 physics_material_override = ExtResource("3_6nn15")
 
@@ -69,7 +69,7 @@ mesh = SubResource("PlaneMesh_0sitv")
 skeleton = NodePath("../../death")
 
 [node name="world_nav_low_z" type="StaticBody3D" parent="."]
-collision_layer = 16
+collision_layer = 144
 collision_mask = 0
 physics_material_override = ExtResource("3_6nn15")
 
@@ -78,7 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 shape = SubResource("WorldBoundaryShape3D_cccvy")
 
 [node name="world_nav_high_x" type="StaticBody3D" parent="."]
-collision_layer = 16
+collision_layer = 144
 collision_mask = 0
 physics_material_override = ExtResource("3_6nn15")
 
@@ -87,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_t3wyb")
 
 [node name="world_nav_high_z" type="StaticBody3D" parent="."]
-collision_layer = 16
+collision_layer = 144
 collision_mask = 0
 physics_material_override = ExtResource("3_6nn15")
 

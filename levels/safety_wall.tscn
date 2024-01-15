@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cex6w7d6wwcmv"]
+[gd_scene load_steps=4 format=3 uid="uid://mlj45opjlf4k"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://cnaw0jyfy0esy" path="res://monsters/nav_ball.phymat" id="1_0t3m4"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v0gx5"]
+friction = 0.0
+bounce = 1.0
+absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ipj7"]
 size = Vector3(0.9, 40, 0.9)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hf12d"]
 
-[node name="nav_wall" type="StaticBody3D"]
-collision_layer = 16
+[node name="safety_wall" type="StaticBody3D"]
+collision_layer = 128
 collision_mask = 0
 input_ray_pickable = false
-physics_material_override = ExtResource("1_0t3m4")
+physics_material_override = SubResource("PhysicsMaterial_v0gx5")
 
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_4ipj7")

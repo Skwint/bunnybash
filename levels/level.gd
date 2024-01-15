@@ -5,6 +5,7 @@ var bridge_res = preload("res://levels/bridge.tscn")
 var broccoli_res = preload("res://entities/broccoli.tscn")
 var bunny_res = preload("res://monsters/bunny.tscn")
 var nav_wall_res = preload("res://levels/nav_wall.tscn")
+var safety_wall_res = preload("res://levels/safety_wall.tscn")
 var globals
 
 enum Carto { EMPTY, HOUSE, BRIDGE }
@@ -199,6 +200,9 @@ func generate_nav_walls():
 				var nav_wall_object = nav_wall_res.instantiate()
 				nav_wall_object.set_position(Vector3(limits.position.x + x + 0.5, 0.0, limits.position.y + y + 0.5))
 				add_child(nav_wall_object)
+				var safety_wall_object = safety_wall_res.instantiate()
+				safety_wall_object.set_position(Vector3(limits.position.x + x + 0.5, 0.0, limits.position.y + y + 0.5))
+				add_child(safety_wall_object)
 				
 	get_node("world_nav_low_x").get_node("shape").position.x = limits.position.x
 	get_node("world_nav_low_z").get_node("shape").position.z = limits.position.y

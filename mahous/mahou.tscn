@@ -18,7 +18,7 @@ size = Vector2(1, 0.1)
 
 [node name="mahou" type="RigidBody3D" groups=["mahou"]]
 collision_layer = 8
-collision_mask = 13
+collision_mask = 141
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
