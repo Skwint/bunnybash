@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2aka4snlvwye"]
 
 [ext_resource type="Script" path="res://mahous/gwen/rock_ball.gd" id="1_oqyld"]
+[ext_resource type="Material" uid="uid://dxs3f60x7nxgv" path="res://mahous/gwen/rock.material" id="2_8tx4i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a4lsd"]
 bounce = 0.3
@@ -8,11 +9,8 @@ bounce = 0.3
 [sub_resource type="SphereShape3D" id="SphereShape3D_q6v55"]
 radius = 0.2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj0vm"]
-albedo_color = Color(0.537255, 0.278431, 0, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_4dt4a"]
-material = SubResource("StandardMaterial3D_hj0vm")
+material = ExtResource("2_8tx4i")
 radius = 0.2
 height = 0.4
 radial_segments = 4

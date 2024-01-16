@@ -1,0 +1,13 @@
+[gd_resource type="QuadMesh" load_steps=3 format=3 uid="uid://dbr5evacciwho"]
+
+[ext_resource type="Texture2D" uid="uid://b37pyyf02n3sn" path="res://mahous/undine/drop.png" id="1_kc4k6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4ode"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_kc4k6")
+
+[resource]
+material = SubResource("StandardMaterial3D_x4ode")
+custom_aabb = AABB(0, -2, 0, 0.5, 6, 0.5)
+size = Vector2(0.05, 0.1)

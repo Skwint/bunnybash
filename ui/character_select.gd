@@ -9,6 +9,7 @@ func _ready():
 	ui_signals = get_node("/root/ui_stack_signals")
 	globals = get_node("/root/globals")
 	desc = get_node("right/description")
+	_on_item_list_item_selected(1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

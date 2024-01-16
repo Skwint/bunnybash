@@ -10,11 +10,11 @@ radius = 0.3
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kq2a"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.270588, 0.498039, 1, 0.501961)
+albedo_color = Color(0, 0, 1, 0.784314)
 
 [sub_resource type="QuadMesh" id="QuadMesh_nv5nt"]
 material = SubResource("StandardMaterial3D_5kq2a")
-size = Vector2(1, 0.1)
+size = Vector2(0.5, 0.03)
 
 [node name="mahou" type="RigidBody3D" groups=["mahou"]]
 collision_layer = 8
@@ -40,6 +40,10 @@ transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.
 [node name="model" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
 
-[node name="mana_bar" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1, 0)
+[node name="cdr_1_bar" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.8, 0)
+mesh = SubResource("QuadMesh_nv5nt")
+
+[node name="cdr_2_bar" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.85, 0)
 mesh = SubResource("QuadMesh_nv5nt")

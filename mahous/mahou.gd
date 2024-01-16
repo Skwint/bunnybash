@@ -6,29 +6,33 @@ var camera : Camera3D
 var target : Vector3
 var aim : Vector3
 var reticle : Node3D
-var mana : float
 var max_mana : float = 1.0
-var mana_regen : float = 0.05 / 60.0
-var mana_bar : MeshInstance3D
 var floor_damp : float = 30.0
 var move_dir : Vector3
 var animation : AnimationPlayer
+
+var cdr_1 : float = 0.0
+var cdr_1_max : float = 0.5
+var cdr_1_bar : MeshInstance3D
+var cdr_2 : float = 0.0
+var cdr_2_max : float = 1.0
+var cdr_2_bar : MeshInstance3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	model = get_node("model")
 	camera = get_node("camera")
 	reticle = get_node("reticle")
-	mana_bar = get_node("mana_bar")
+	cdr_1_bar = get_node("cdr_1_bar")
+	cdr_2_bar = get_node("cdr_2_bar")
 	move_dir = Vector3(0.0, 0.0, 1.0)
-	set_mana(max_mana)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var mousePos = get_viewport().get_mouse_position()
 	var origin = camera.project_ray_origin(mousePos)
 	var direction = camera.project_ray_normal(mousePos)
@@ -73,14 +77,28 @@ func _physics_process(_delta):
 	else:
 		linear_damp = 0
 
-	if (mana < max_mana):
-		set_mana(min(max_mana, mana + mana_regen))
+	if Input.is_action_pressed("action_1") and cdr_1 <= 0.0:
+		do_action_1()
+		cdr_1 = cdr_1_max
+	else:
+		cdr_1 = max(0.0, cdr_1 - delta)
+	cdr_1_bar.scale.x = cdr_1
+	cdr_1_bar.scale.x = (cdr_1_max - cdr_1) / cdr_1_max
+
+	if Input.is_action_pressed("action_2") and cdr_2 <= 0.0:
+		do_action_2()
+		cdr_2 = cdr_2_max
+	else:
+		cdr_2 = max(0.0, cdr_2 - delta)
+	cdr_2_bar.scale.x = (cdr_2_max - cdr_2) / cdr_2_max
+	
 
 func spawn(pos):
 	position = Vector3(pos.x + 0.5, 0.75, pos.y + 0.5)
 	camera.make_current()
 
-func set_mana(value):
-	mana = value
-	mana_bar.scale.x = mana
-
+func do_action_1():
+	pass
+	
+func do_action_2():
+	pass

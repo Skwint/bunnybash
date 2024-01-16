@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://doeabfu1pq2kc"]
+
+[ext_resource type="Material" uid="uid://dxs3f60x7nxgv" path="res://mahous/gwen/rock.material" id="1_ailhv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xdkji"]
+size = Vector3(2, 0.5, 0.3)
+
+[sub_resource type="PrismMesh" id="PrismMesh_2o8fh"]
+material = ExtResource("1_ailhv")
+size = Vector3(0.3, 0.5, 2)
+
+[node name="rock_wall" type="StaticBody3D"]
+collision_layer = 17
+collision_mask = 0
+
+[node name="shape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xdkji")
+
+[node name="model" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_2o8fh")
