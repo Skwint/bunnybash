@@ -1,38 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg7266ov68myd"]
+[gd_scene load_steps=6 format=3 uid="uid://bg7266ov68myd"]
 
 [ext_resource type="Script" path="res://mahous/sally/fireball.gd" id="1_eioeo"]
+[ext_resource type="Material" uid="uid://cib4xenky3os7" path="res://mahous/sally/fire.material" id="2_qlhvu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qwufd"]
 radius = 0.1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_arn8r"]
+particle_flag_rotate_y = true
 emission_shape = 1
 emission_sphere_radius = 0.2
-initial_velocity_min = -1.0
+angle_min = 45.0
+angle_max = 45.0
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = -4.0
 initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00bp7"]
-shading_mode = 0
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_4g8n4"]
-material = SubResource("StandardMaterial3D_00bp7")
-radius = 0.03
-height = 0.06
-radial_segments = 16
-rings = 8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2axf"]
-shading_mode = 0
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_vqh31"]
-material = SubResource("StandardMaterial3D_f2axf")
-radius = 0.1
-height = 0.2
-radial_segments = 16
-rings = 8
+[sub_resource type="QuadMesh" id="QuadMesh_3xdrd"]
+material = ExtResource("2_qlhvu")
+size = Vector2(0.2, 0.2)
 
 [node name="fireball" type="RigidBody3D"]
 collision_layer = 0
@@ -50,9 +38,6 @@ gi_mode = 0
 amount = 32
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_arn8r")
-draw_pass_1 = SubResource("SphereMesh_4g8n4")
-
-[node name="model" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_vqh31")
+draw_pass_1 = SubResource("QuadMesh_3xdrd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

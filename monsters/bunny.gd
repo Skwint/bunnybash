@@ -114,7 +114,6 @@ func set_stage(s):
 		s = max_stage
 	elif s > stage:
 		var count = get_tree().get_nodes_in_group("monster").size()
-		print(count)
 		if count > max_bunnies - 3:
 			s = stage
 
