@@ -16,11 +16,23 @@ script = ExtResource("1_kuivp")
 
 [node name="instructions" type="Label" parent="."]
 layout_mode = 2
+size_flags_vertical = 1
 text = "Oh No!
 Goop Bunnies are eating all our dumb Brocolli!
-Go Get Them!
+Get Them!
 
-Controls are WASD or arrow keys and the two mouse buttons."
+each game takes from 10pm to 2am, so they last 4 minutes (don't think about it)
+You begin with 1000 points and lose one point each time a bunny eats some broccoli
+when a bunny eats it will expand and then, probably, divide into 4 smaller bunnies
+you can stop bunnies by pushing them off the roof 
+(unless you are sally, who is more ... direct ...)
+
+Movement is with W A S D
+Each character has two skills bound to left click and right click
+each skill has a cooldown shown in the blue bars above your characters head
+there is no mana, so feel free to go nuts
+
+this game is about as balanced as an inverted cone but I hope it is at least funny"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjw522enodsg1"]
+[gd_scene load_steps=13 format=3 uid="uid://bjw522enodsg1"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_1sjvv"]
 [ext_resource type="PhysicsMaterial" uid="uid://cnaw0jyfy0esy" path="res://monsters/nav_ball.phymat" id="3_6nn15"]
 [ext_resource type="PhysicsMaterial" uid="uid://f4kqblue3fty" path="res://levels/house.phymat" id="3_wvlyc"]
+[ext_resource type="PackedScene" uid="uid://b4v8o655y6lwq" path="res://ui/hud.tscn" id="4_bhqx3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_crqfd"]
 size = Vector3(100, 2, 100)
@@ -102,5 +103,7 @@ physics_material_override = ExtResource("3_wvlyc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ground_plane"]
 shape = SubResource("WorldBoundaryShape3D_bn3uk")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_bhqx3")]
 
 [connection signal="body_entered" from="death" to="." method="_on_death_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl3xlhoo6t68"]
+[gd_scene load_steps=7 format=3 uid="uid://dl3xlhoo6t68"]
 
 [ext_resource type="Script" path="res://mahous/mahou.gd" id="1_jv4os"]
 [ext_resource type="PhysicsMaterial" uid="uid://b85o18fu2mcpo" path="res://mahous/mahou.phymat" id="1_r55mp"]
@@ -6,6 +6,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ehwdw"]
 height = 1.5
 radius = 0.3
+
+[sub_resource type="Environment" id="Environment_l2pn8"]
+background_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kq2a"]
 transparency = 1
@@ -34,6 +37,7 @@ shape = SubResource("CylinderShape3D_ehwdw")
 
 [node name="camera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 2, 2, 2)
+environment = SubResource("Environment_l2pn8")
 
 [node name="reticle" type="Node3D" parent="."]
 

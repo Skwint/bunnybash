@@ -26,11 +26,14 @@ const min_top : int = - house_space_z * houses_deep / 2
 const max_right : int = house_space_x * houses_wide / 2
 const max_bottom : int = house_space_z * houses_deep / 2
 const start_bunny_count : int = 20
+var ui_signals
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	globals = get_node("/root/globals")
 	generate()
+	globals.score = 1000
+	ui_signals = get_node("/root/ui_stack_signals")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -269,3 +272,4 @@ func _on_death_body_entered(body):
 		body.get_parent().queue_free()
 	elif body.is_in_group("mahou"):
 		spawn(body)
+

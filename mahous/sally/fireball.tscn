@@ -7,7 +7,6 @@
 radius = 0.1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_arn8r"]
-particle_flag_rotate_y = true
 emission_shape = 1
 emission_sphere_radius = 0.2
 angle_min = 45.0
@@ -37,6 +36,7 @@ shape = SubResource("SphereShape3D_qwufd")
 gi_mode = 0
 amount = 32
 lifetime = 0.5
+transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_arn8r")
 draw_pass_1 = SubResource("QuadMesh_3xdrd")
 

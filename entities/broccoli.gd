@@ -8,6 +8,7 @@ var grow_time : float = 0.0
 const max_grow_time : float = 2.0
 const max_scale : float = 0.14
 const fertility : float = 0.03 / 60.0
+var globals
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,7 @@ func _ready():
 	model.visible = false
 	coll = get_node("shape")
 	coll.disabled = true
+	globals = get_node("/root/globals")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,4 +57,4 @@ func _on_body_entered(body):
 		grow_time = 0.0
 		state = State.SHRINKING
 		body.get_parent().feed()
-		
+		globals.score = globals.score - 1

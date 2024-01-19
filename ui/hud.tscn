@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4v8o655y6lwq"]
+
+[ext_resource type="Texture2D" uid="uid://crxtvejjvxpve" path="res://ui/clock.png" id="1_c208f"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_pv7fr"]
+[ext_resource type="Texture2D" uid="uid://n4koh7644rpt" path="res://ui/hand.png" id="2_m25m4"]
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource("1_pv7fr")
+
+[node name="control" type="Control" parent="."]
+clip_children = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 104.0
+
+[node name="clock_face" type="TextureRect" parent="control"]
+layout_mode = 2
+offset_right = 320.0
+offset_bottom = 102.0
+size_flags_vertical = 0
+texture = ExtResource("1_c208f")
+
+[node name="clock_hand" type="TextureRect" parent="control"]
+layout_mode = 2
+offset_left = 140.0
+offset_top = 10.0
+offset_right = 180.0
+offset_bottom = 138.0
+rotation = -1.0472
+pivot_offset = Vector2(20, 145)
+texture = ExtResource("2_m25m4")
+
+[node name="score_label" type="Label" parent="control"]
+layout_mode = 0
+offset_left = 572.0
+offset_right = 654.0
+offset_bottom = 22.0
+text = "Score:"
+
+[node name="score_value" type="Label" parent="control"]
+layout_mode = 0
+offset_left = 681.0
+offset_right = 763.0
+offset_bottom = 22.0
+text = "1000"

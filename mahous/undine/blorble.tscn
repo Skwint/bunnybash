@@ -41,6 +41,7 @@ shape = SubResource("SphereShape3D_eieae")
 [node name="particles" type="GPUParticles3D" parent="."]
 explosiveness = 1.0
 local_coords = true
+transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_ido6x")
 draw_pass_1 = ExtResource("2_vkk1c")
 

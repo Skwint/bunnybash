@@ -80,7 +80,7 @@ func _physics_process(delta):
 				var speed = body.linear_velocity.dot(dir)
 				if speed < max_speed:
 					body.apply_central_impulse(dir * bunny_thrust)
-	else: # state.GROWING
+	else: # state.RESIZING
 		resize_time += delta
 		if resize_time >= max_resize_time:
 			rescale(1.0)
@@ -103,7 +103,6 @@ func multiply():
 		var rot : float = base_rotation.y + angle
 		inst.body.set_rotation(Vector3(base_rotation.x, rot, base_rotation.z))
 		inst.reposition(body.position + move.rotated(Vector3(0.0,1.0,0.0), rot))
-		inst.stage = stage - 2
 		inst.set_stage(stage - 1)
 		angle += PI / 2
 	# we could reuse this bunny but it gets complicated
@@ -112,10 +111,6 @@ func multiply():
 func set_stage(s):
 	if s > max_stage:
 		s = max_stage
-	elif s > stage:
-		var count = get_tree().get_nodes_in_group("monster").size()
-		if count > max_bunnies - 3:
-			s = stage
 
 	if s != stage:
 		new_stage = s
@@ -141,7 +136,9 @@ func reposition(pos):
 	ball.set_position(ballpos)
 
 func feed():
-	set_stage(stage + 1)
+	var count = get_tree().get_nodes_in_group("monster").size()
+	if count < max_bunnies:
+		set_stage(stage + 1)
 
 func kill():
 	set_stage(0)
