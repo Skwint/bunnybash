@@ -26,6 +26,7 @@ func do_action_1():
 	ball.global_transform = global_transform
 	ball.position.y = 0.15
 	ball.linear_velocity = aim * fireball_speed
+	ball.look_at(ball.global_position + aim)
 
 func do_action_2():
 	var flamethrower = flamethrower_res.instantiate()

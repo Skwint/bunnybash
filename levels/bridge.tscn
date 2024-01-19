@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://f8ntlx73cacy"]
+[gd_scene load_steps=6 format=3 uid="uid://f8ntlx73cacy"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://f4kqblue3fty" path="res://levels/house.phymat" id="1_tid2a"]
+[ext_resource type="Texture2D" uid="uid://bsqcs30s7dgqx" path="res://levels/green_barrier_floor.png" id="2_ljvsu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y05rq"]
 size = Vector3(1, 0.2, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fsp0"]
-albedo_color = Color(0.129412, 0.141176, 1, 1)
+albedo_color = Color(0.760784, 0.760784, 0.760784, 1)
+albedo_texture = ExtResource("2_ljvsu")
 
 [sub_resource type="BoxMesh" id="BoxMesh_o31mi"]
 material = SubResource("StandardMaterial3D_0fsp0")

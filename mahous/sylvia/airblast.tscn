@@ -1,9 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://24xas48ohpbl"]
+[gd_scene load_steps=7 format=3 uid="uid://24xas48ohpbl"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://cw6evllshw057" path="res://monsters/bunny.phymat" id="1_vdjov"]
 [ext_resource type="Script" path="res://mahous/sylvia/airblast.gd" id="2_rmqwu"]
+[ext_resource type="Texture2D" uid="uid://cd3vh4wsdw4o7" path="res://mahous/sylvia/whirlwind.png" id="3_sxebt"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0a3rh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2pf4"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_sxebt")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uvm01"]
+material = SubResource("StandardMaterial3D_k2pf4")
+size = Vector2(1.3, 1.3)
+orientation = 1
 
 [node name="airblast" type="RigidBody3D"]
 collision_layer = 64
@@ -15,3 +26,7 @@ script = ExtResource("2_rmqwu")
 
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_0a3rh")
+
+[node name="model" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("QuadMesh_uvm01")

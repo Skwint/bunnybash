@@ -3,7 +3,7 @@ extends "res://mahous/mahou.gd"
 var whirlwind_res = preload("whirlwind.tscn")
 const whirlwind_speed : float = 2.0
 var airblast_res = preload("airblast.tscn")
-const airblast_speed : float = 10.0
+const airblast_speed : float = 5.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

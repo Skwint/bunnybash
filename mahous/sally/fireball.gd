@@ -21,6 +21,5 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	particles.reparent(body)
 	body.get_parent().kill()
 	queue_free()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfacyetf4s6rn"]
+[gd_scene load_steps=10 format=3 uid="uid://dfacyetf4s6rn"]
 
 [ext_resource type="PackedScene" uid="uid://dl3xlhoo6t68" path="res://mahous/mahou.tscn" id="1_nehls"]
 [ext_resource type="Script" path="res://mahous/sylvia/sylvia.gd" id="2_8cx5n"]
 [ext_resource type="Texture2D" uid="uid://bb31gn1mem22i" path="res://mahous/sylvia/sigil.png" id="2_a6gqe"]
 [ext_resource type="PackedScene" uid="uid://bl5t2vxw4ywd0" path="res://mahous/sylvia/sylvia_model.tscn" id="4_r3kiy"]
+[ext_resource type="Texture2D" uid="uid://cd3vh4wsdw4o7" path="res://mahous/sylvia/whirlwind.png" id="5_w3rkr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grq74"]
 transparency = 1
@@ -16,6 +17,15 @@ material = SubResource("StandardMaterial3D_grq74")
 size = Vector2(0.3, 0.3)
 orientation = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pw60"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("5_w3rkr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1mk0t"]
+material = SubResource("StandardMaterial3D_2pw60")
+orientation = 1
+
 [node name="mahou" instance=ExtResource("1_nehls")]
 collision_mask = 45
 script = ExtResource("2_8cx5n")
@@ -25,3 +35,7 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 mesh = SubResource("QuadMesh_nx7n7")
 
 [node name="sylvia" parent="model" index="0" instance=ExtResource("4_r3kiy")]
+
+[node name="wind" type="MeshInstance3D" parent="model" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("QuadMesh_1mk0t")
