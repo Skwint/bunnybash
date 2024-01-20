@@ -5,6 +5,7 @@ var rock_ball_res = preload("rock_ball.tscn")
 const rock_ball_speed : float = 10.0
 var rock_wall_res = preload("rock_wall.tscn")
 var rock_wall : StaticBody3D
+const kick = 0.1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,4 +37,12 @@ func do_action_2():
 	get_node("/root").add_child(rock_wall)
 	rock_wall.position = target
 	rock_wall.look_at(target + aim)
-	rock_wall.position.y = 0.5
+	rock_wall.position.y = 0.25
+
+
+func _on_body_entered(body):
+	if body.is_in_group("monster"):
+		var bunny = body.get_parent()
+		if bunny.stage == 1 and body.linear_velocity.y <= 0.0:
+			body.apply_central_impulse(Vector3(0.0, kick, 0.0))
+			

@@ -72,7 +72,10 @@ func _physics_process(delta):
 			animation.play("run")
 		else:
 			model.look_at(model.global_position - aim)
-			animation.play("idle")
+			if Input.is_action_pressed("action_1") or Input.is_action_pressed("action_2"):
+				animation.play("cast")
+			else:
+				animation.play("idle")
 
 	else:
 		linear_damp = 0

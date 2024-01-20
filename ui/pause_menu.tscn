@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhqdw3edam3gk"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_ugn61"]
+
+[node name="pause_menu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ugn61")
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 456.0
+offset_right = 697.0
+offset_bottom = 481.0
+text = "Return to main menu"
+
+[node name="continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 208.0
+offset_right = 650.0
+offset_bottom = 233.0
+text = "Keep playing"
+
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]

@@ -31,4 +31,6 @@ func _process(delta):
 
 
 func _on_ok_button_pressed():
-	ui_signals._pop()
+	ui_signals._pop() # this
+	ui_signals._pop() # the game
+	get_tree().paused = false

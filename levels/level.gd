@@ -38,8 +38,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
-
+	if Input.is_action_pressed("pause"):
+		get_tree().paused = true
+		ui_signals._push("res://ui/pause_menu.tscn")
 
 func generate():
 	generate_rects()

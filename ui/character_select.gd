@@ -16,7 +16,7 @@ func _process(_delta):
 	pass
 
 func _on_back_pressed():
-	get_tree().quit()
+	ui_signals._pop()
 
 func _on_play_pressed():
 	ui_signals._push("res://levels/level.tscn")
@@ -25,10 +25,10 @@ func _on_play_pressed():
 func _on_item_list_item_selected(index):
 	if (index == 0):
 		globals.player_character = "res://mahous/undine/undine.tscn"
-		desc.text = "Name: Undine Wells\nAKA: Alchemical Water\nPlay style: technical\nMouse 1: Summon blorble\nMouse 2: Control blorble"
+		desc.text = "Name: Undine Wells\nAKA: Alchemical Water\nPlay style: technical\nMouse 1: Water blast\nMouse 2: Sploosh from above"
 	elif (index == 1):
 		globals.player_character = "res://mahous/sally/sally.tscn"
-		desc.text = "Name: Sally Finton\nAKA: Alchemical Fire\nPlay style: simple and direct\nMouse 1: Fireball\nMouse 2: Flame\nSally is the only character that kills monsters directly, which makes her by far the easiest to play."
+		desc.text = "Name: Sally Finton\nAKA: Alchemical Fire\nPlay style: simple and direct\nMouse 1: Fireball\nMouse 2: Flames\nSally is the only character that kills monsters directly."
 	elif (index == 2):
 		globals.player_character = "res://mahous/sylvia/sylvia.tscn"
 		desc.text = "Name: Sylvia Skylark\nAKA: Alchemical Air\nPlay style: good luck\nMouse 1: Air blast\nMouse 2: Whirlwind\nSylvia has the power of air. She has no need to fear heights."

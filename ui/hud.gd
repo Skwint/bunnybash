@@ -25,5 +25,5 @@ func _process(delta):
 
 	if (run_time > total_time):
 		var ui_signals = get_node("/root/ui_stack_signals")._pop()
-		ui_signals._pop()
+		get_tree().paused = true
 		ui_signals._push("res://ui/game_over.tscn")

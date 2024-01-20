@@ -28,3 +28,5 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 mesh = SubResource("QuadMesh_hd0vy")
 
 [node name="gwen" parent="model" index="0" instance=ExtResource("4_rd1um")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

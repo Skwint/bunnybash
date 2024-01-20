@@ -7,7 +7,7 @@
 radius = 0.4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eieae"]
-radius = 0.3
+radius = 0.4
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ido6x"]
 emission_shape = 1
@@ -31,11 +31,11 @@ script = ExtResource("1_6yipw")
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_8baux")
 
-[node name="capture" type="Area3D" parent="."]
+[node name="push" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
-[node name="shape" type="CollisionShape3D" parent="capture"]
+[node name="shape" type="CollisionShape3D" parent="push"]
 shape = SubResource("SphereShape3D_eieae")
 
 [node name="particles" type="GPUParticles3D" parent="."]
@@ -46,4 +46,4 @@ process_material = SubResource("ParticleProcessMaterial_ido6x")
 draw_pass_1 = ExtResource("2_vkk1c")
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
-[connection signal="body_entered" from="capture" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="push" to="." method="_on_area_3d_body_entered"]

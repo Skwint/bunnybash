@@ -2,8 +2,16 @@
 
 [ext_resource type="Script" path="res://ui/help_menu.gd" id="1_kuivp"]
 
-[node name="helpMenu" type="VBoxContainer"]
+[node name="help_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 350.0
+offset_right = 1152.0
+offset_bottom = 350.0
+
+[node name="helpMenu" type="VBoxContainer" parent="."]
 layout_direction = 1
+layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -14,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kuivp")
 
-[node name="instructions" type="Label" parent="."]
+[node name="instructions" type="Label" parent="helpMenu"]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Oh No!
@@ -37,8 +45,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="btnBack" type="Button" parent="."]
+[node name="btnBack" type="Button" parent="helpMenu"]
 layout_mode = 2
 text = "Back"
 
-[connection signal="pressed" from="btnBack" to="." method="_on_btn_back_pressed"]
+[connection signal="pressed" from="helpMenu/btnBack" to="helpMenu" method="_on_btn_back_pressed"]
