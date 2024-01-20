@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl8nrarsw5wgh"]
+[gd_scene load_steps=6 format=3 uid="uid://dl8nrarsw5wgh"]
 
 [ext_resource type="Texture2D" uid="uid://bv7owgpycb0of" path="res://ui/background.png" id="1_e86gu"]
 [ext_resource type="Script" path="res://ui/help_menu.gd" id="1_kuivp"]
+[ext_resource type="Texture2D" uid="uid://or253gcw138v" path="res://ui/bunny_help.png" id="3_e3t6n"]
+[ext_resource type="Texture2D" uid="uid://bj4dgoxi41qg4" path="res://ui/push_help.png" id="4_yjan3"]
+[ext_resource type="Texture2D" uid="uid://ctnvxyca2yvek" path="res://ui/do_not_feed.png" id="5_2nxel"]
 
 [node name="help_menu" type="Control"]
 layout_mode = 3
@@ -21,6 +24,15 @@ grow_vertical = 2
 texture = ExtResource("1_e86gu")
 expand_mode = 3
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = 250.0
+offset_top = 47.0
+offset_right = 857.0
+offset_bottom = 535.0
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.686275)
+
 [node name="helpMenu" type="VBoxContainer" parent="."]
 layout_direction = 1
 layout_mode = 1
@@ -28,10 +40,13 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -239.0
-offset_bottom = 150.0
+offset_left = 250.0
+offset_top = -277.0
+offset_right = -295.0
+offset_bottom = 217.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 script = ExtResource("1_kuivp")
 
 [node name="instructions" type="Label" parent="helpMenu"]
@@ -41,7 +56,7 @@ text = "Oh No!
 Goop Bunnies are eating all our dumb Brocolli!
 Get Them!
 
-each game takes from 10pm to 2am, so they last 4 minutes (don't think about it)
+each game takes from 10pm to 2am, so they last 2 minutes (don't think too hard about it)
 You begin with 1000 points and lose one point each time a bunny eats some broccoli
 when a bunny eats it will expand and then, probably, divide into 4 smaller bunnies
 you can stop bunnies by pushing them off the roof 
@@ -60,5 +75,29 @@ autowrap_mode = 2
 [node name="btnBack" type="Button" parent="helpMenu"]
 layout_mode = 2
 text = "Back"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 41.0
+offset_right = 1112.0
+offset_bottom = 297.0
+texture = ExtResource("3_e3t6n")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 240.0
+offset_right = 265.0
+offset_bottom = 496.0
+texture = ExtResource("4_yjan3")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 377.0
+offset_right = 1071.0
+offset_bottom = 633.0
+texture = ExtResource("5_2nxel")
 
 [connection signal="pressed" from="helpMenu/btnBack" to="helpMenu" method="_on_btn_back_pressed"]

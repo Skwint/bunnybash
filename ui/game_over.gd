@@ -20,7 +20,7 @@ func _ready():
 	globals = get_node("/root/globals")
 	var score = globals.score
 	$score_value.text = str(score)
-	var index : int = (500 - score) / 50
+	var index : int = (1000 - score) / 50
 	index = clampi(index, 0, comments.size() - 1)
 	$comment.text = comments[index]
 
