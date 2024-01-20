@@ -1,20 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjpvmott02qn8"]
+[gd_scene load_steps=2 format=3 uid="uid://bjpvmott02qn8"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_nsgvi"]
-[ext_resource type="Texture2D" uid="uid://d28ln80tld78i" path="res://sky.png" id="2_4txqk"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jdkhk"]
-panorama = ExtResource("2_4txqk")
-
-[sub_resource type="Sky" id="Sky_g0dvl"]
-sky_material = SubResource("PanoramaSkyMaterial_jdkhk")
-
-[sub_resource type="Environment" id="Environment_ky2bd"]
-background_mode = 2
-sky = SubResource("Sky_g0dvl")
 
 [node name="root" type="Node3D"]
 script = ExtResource("1_nsgvi")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ky2bd")

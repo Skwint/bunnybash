@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqqcmm1gsg8ry"]
+[gd_scene load_steps=3 format=3 uid="uid://dqqcmm1gsg8ry"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_b3su1"]
+[ext_resource type="Texture2D" uid="uid://bv7owgpycb0of" path="res://ui/background.png" id="1_mneiw"]
 
-[node name="mainMenu" type="VBoxContainer"]
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mneiw")
+expand_mode = 3
+
+[node name="mainMenu" type="VBoxContainer" parent="."]
 layout_direction = 1
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -17,18 +37,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b3su1")
 
-[node name="play" type="Button" parent="."]
+[node name="play" type="Button" parent="mainMenu"]
 layout_mode = 2
 text = "play"
 
-[node name="btnHelp" type="Button" parent="."]
+[node name="btnHelp" type="Button" parent="mainMenu"]
 layout_mode = 2
 text = "Help"
 
-[node name="btnExit" type="Button" parent="."]
+[node name="btnExit" type="Button" parent="mainMenu"]
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="btnHelp" to="." method="_on_btn_help_pressed"]
-[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="mainMenu/play" to="mainMenu" method="_on_play_pressed"]
+[connection signal="pressed" from="mainMenu/btnHelp" to="mainMenu" method="_on_btn_help_pressed"]
+[connection signal="pressed" from="mainMenu/btnExit" to="mainMenu" method="_on_btn_exit_pressed"]

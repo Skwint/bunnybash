@@ -5,7 +5,7 @@ var rock_ball_res = preload("rock_ball.tscn")
 const rock_ball_speed : float = 10.0
 var rock_wall_res = preload("rock_wall.tscn")
 var rock_wall : StaticBody3D
-const kick = 0.1
+const kick = 0.4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

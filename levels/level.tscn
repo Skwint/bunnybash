@@ -1,9 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjw522enodsg1"]
+[gd_scene load_steps=16 format=3 uid="uid://bjw522enodsg1"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_1sjvv"]
+[ext_resource type="Texture2D" uid="uid://d28ln80tld78i" path="res://sky.png" id="2_eqybt"]
 [ext_resource type="PhysicsMaterial" uid="uid://cnaw0jyfy0esy" path="res://monsters/nav_ball.phymat" id="3_6nn15"]
 [ext_resource type="PhysicsMaterial" uid="uid://f4kqblue3fty" path="res://levels/house.phymat" id="3_wvlyc"]
 [ext_resource type="PackedScene" uid="uid://b4v8o655y6lwq" path="res://ui/hud.tscn" id="4_bhqx3"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_86gtf"]
+panorama = ExtResource("2_eqybt")
+
+[sub_resource type="Sky" id="Sky_g0dvl"]
+sky_material = SubResource("PanoramaSkyMaterial_86gtf")
+
+[sub_resource type="Environment" id="Environment_q47qp"]
+background_mode = 2
+sky = SubResource("Sky_g0dvl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_crqfd"]
 size = Vector3(100, 2, 100)
@@ -12,9 +23,6 @@ size = Vector3(100, 2, 100)
 plane = Plane(1, 0, 0, 0)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bsc40"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_0sitv"]
-size = Vector2(20, 20)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cccvy"]
 plane = Plane(0, 0, 1, 0)
@@ -29,6 +37,9 @@ plane = Plane(0, 0, -1, 0)
 
 [node name="level" type="Node3D"]
 script = ExtResource("1_1sjvv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q47qp")
 
 [node name="death" type="Area3D" parent="."]
 collision_layer = 0
@@ -63,11 +74,6 @@ physics_material_override = ExtResource("3_6nn15")
 [node name="shape" type="CollisionShape3D" parent="world_stop_low_y"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 shape = SubResource("WorldBoundaryShape3D_bsc40")
-
-[node name="debug" type="MeshInstance3D" parent="world_stop_low_y"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
-mesh = SubResource("PlaneMesh_0sitv")
-skeleton = NodePath("../../death")
 
 [node name="world_nav_low_z" type="StaticBody3D" parent="."]
 collision_layer = 144
